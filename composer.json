@@ -1,0 +1,56 @@
+{
+    "name": "sertxudeveloper/livewire-combobox",
+    "description": "Add combobox to your Livewire forms",
+    "keywords": [
+        "sertxudeveloper",
+        "laravel",
+        "livewire-combobox"
+    ],
+    "homepage": "https://github.com/sertxudeveloper/livewire-combobox",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sergio Peris",
+            "email": "dev.sertxu@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "illuminate/contracts": "^9.5",
+        "illuminate/database": "^9.5",
+        "illuminate/support": "^9.5"
+    },
+    "require-dev": {
+        "nunomaduro/collision": "^6.0",
+        "orchestra/testbench": "^7.5",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "SertxuDeveloper\\LivewireCombobox\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SertxuDeveloper\\LivewireCombobox\\Tests\\": "tests",
+            "SertxuDeveloper\\LivewireCombobox\\Tests\\Database\\Factories\\": "tests/database/factories"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SertxuDeveloper\\LivewireCombobox\\ComboboxServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
