@@ -94,7 +94,7 @@ You can also pass some parameters to the component:
 <livewire:users-combobox name="author" label="Author" placeholder="Select a user">
 ```
 
-> **Warning:**<br>
+> **Warning**<br>
 > If you don't pass any parameters, the component will use the default values.<br>
 > It's recommended to pass the parameters to the component.<br>
 > You can also add the values overriding the default values in the class.
@@ -110,7 +110,7 @@ The name of the events depends on the component name, this allows you to have mo
 
 These events will be fired up, so the parent component can react to the user interaction.
 
-> **Note:**<br>
+> **Note**<br>
 > The `selected` event contains the selected model as a parameter.
 
 ## Testing
