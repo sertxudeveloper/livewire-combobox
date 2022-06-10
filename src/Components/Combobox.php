@@ -16,9 +16,9 @@ abstract class Combobox extends Component {
 
     public ?Model $selected = null;
 
-    public string $name;
-    public string $label = '';
-    public string $placeholder;
+    public string $name = 'combobox';
+    public string $label = 'Combobox';
+    public string $placeholder = 'Select an option';
 
     /** The search query */
     public string $search = '';
