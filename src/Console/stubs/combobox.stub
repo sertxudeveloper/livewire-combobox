@@ -1,0 +1,14 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ namespacedModel }};
+use SertxuDeveloper\LivewireCombobox\Components\Combobox;
+
+class {{ class }} extends Combobox
+{
+
+    /** @var class-string<Model> $model */
+    public string $model = {{ model }}::class;
+
+}
