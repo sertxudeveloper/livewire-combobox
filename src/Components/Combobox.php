@@ -110,7 +110,10 @@ abstract class Combobox extends Component {
         if ($this->selected && $this->selected->{$this->labelColumn} !== $this->search)
             $this->selected = null;
 
-        if (!$this->search) return null;
+        if (!$this->search) {
+            $this->clearSelection();
+            return null;
+        }
 
         $result = $this->queryModel();
 
@@ -158,5 +161,17 @@ abstract class Combobox extends Component {
         }
 
         $this->emitUp("selected-$this->name", $model);
+    }
+
+    /**
+     * Clear the current selection.
+     *
+     * @return void
+     */
+    protected function clearSelection(): void {
+        $this->selected = null;
+        $this->search = '';
+
+        $this->emitUp("cleared-$this->name");
     }
 }

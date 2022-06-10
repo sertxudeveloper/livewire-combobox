@@ -4,8 +4,8 @@
     <label class="form-label" for="{{ $name }}">{{ $label }}</label>
 
     <div class="relative mt-1">
-        <input type="text" class="form-input" name="{{ $name }}" id="{{ $name }}" placeholder="{{ $placeholder }}"
-               @focus="open = true" @click="open = true" wire:model.debounce.800ms="search"
+        <input type="search" class="form-input" name="{{ $name }}" id="{{ $name }}" placeholder="{{ $placeholder }}"
+               @focus="open = true" @click="open = true" wire:model.debounce.800ms="search" wire:clear
                role="combobox" aria-controls="options" aria-expanded="false">
 
         @if($collection && $collection->isNotEmpty())
