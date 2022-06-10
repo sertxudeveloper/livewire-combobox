@@ -35,7 +35,7 @@
     "autoload-dev": {
         "psr-4": {
             "SertxuDeveloper\\LivewireCombobox\\Tests\\": "tests",
-            "SertxuDeveloper\\LivewireCombobox\\Tests\\Database\\Factories\\": "tests/database/factories"
+            "SertxuDeveloper\\LivewireCombobox\\Tests\\Database\\": "tests/database"
         }
     },
     "scripts": {
