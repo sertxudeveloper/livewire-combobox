@@ -14,6 +14,16 @@ typing.
 
 You will no longer need to download all the data at the startup, just get the data you're looking for.
 
+## Requirements
+
+**This package requires AlpineJS to work properly.**
+
+If you're not going to use AlpineJS, you might want to publish the component view in order to replace the AlpineJS functionality.
+
+```bash
+php artisan vendor:publish --provider="SertxuDeveloper\Livewire\LivewireComboboxServiceProvider"
+```
+
 ## Installation
 
 You can install the package via composer:
