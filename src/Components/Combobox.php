@@ -45,7 +45,7 @@ abstract class Combobox extends Component {
      *
      * @var string[]
      */
-    public array $searchColumns = ['*'];
+    public array $searchColumns = ['name'];
 
     /**
      * The columns and the order that should be obtained.
@@ -107,13 +107,11 @@ abstract class Combobox extends Component {
      * @return Collection|null
      */
     protected function getCollection(): ?Collection {
-        if ($this->selected && $this->selected->{$this->labelColumn} !== $this->search)
-            $this->selected = null;
-
-        if (!$this->search) {
+        if ($this->selected && $this->selected->{$this->labelColumn} !== $this->search) {
             $this->clearSelection();
-            return null;
         }
+
+        if (!$this->search) return null;
 
         $result = $this->queryModel();
 
@@ -170,7 +168,6 @@ abstract class Combobox extends Component {
      */
     protected function clearSelection(): void {
         $this->selected = null;
-        $this->search = '';
 
         $this->emitUp("cleared-$this->name");
     }
