@@ -13,6 +13,8 @@ class ComboboxServiceProvider extends ServiceProvider {
      */
     public function boot(): void {
         $this->registerPublishables();
+
+        $this->loadViewsFrom(dirname(__DIR__) . '/resources/views', 'livewire-combobox');
     }
 
     /**
@@ -30,6 +32,8 @@ class ComboboxServiceProvider extends ServiceProvider {
      * @return void
      */
     protected function registerPublishables(): void {
-        //
+        $this->publishes([
+            dirname(__DIR__) . '/resources/views' => resource_path('views/vendor/livewire-combobox'),
+        ]);
     }
 }
