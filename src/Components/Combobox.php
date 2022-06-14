@@ -27,6 +27,13 @@ abstract class Combobox extends Component {
     public bool $keepSelection = true;
 
     /**
+     * The initial selection of the combobox.
+     *
+     * @var Model|null
+     */
+    public ?Model $init = null;
+
+    /**
      * The columns that should be obtained.
      *
      * @var string[]
@@ -71,12 +78,26 @@ abstract class Combobox extends Component {
     public bool $selectOnlyResult = true;
 
     /**
+     * The properties that should be reset once a selection is made.
+     *
+     * @var array
+     */
+    protected array $resets = [
+        //
+    ];
+
+    /**
      * Mount the component.
      *
      * @return void
      */
     public function mount(): void {
         if (!$this->label) $this->label = Str::headline($this->name);
+
+        if ($this->init && !$this->selected && !$this->search && $this->keepSelection) {
+            if (!$this->init instanceof $this->model) return;
+            $this->selectModel($this->init, true);
+        }
     }
 
     /**
@@ -94,11 +115,12 @@ abstract class Combobox extends Component {
      * Select the given model.
      *
      * @param mixed $id
+     * @param bool $silent
      * @return void
      */
-    public function select(mixed $id): void {
+    public function select(mixed $id, bool $silent = false): void {
         $model = $this->model::query()->find($id, $this->columns);
-        if ($model) $this->selectModel($model);
+        if ($model) $this->selectModel($model, $silent);
     }
 
     /**
@@ -150,15 +172,23 @@ abstract class Combobox extends Component {
      * Set as selected the provided model and emit the selected event.
      *
      * @param mixed $model
+     * @param bool $silent
      * @return void
      */
-    protected function selectModel(mixed $model): void {
+    protected function selectModel(mixed $model, bool $silent = false): void {
         if ($this->keepSelection) {
             $this->selected = $model;
             $this->search = $model->{$this->labelColumn};
         }
 
-        $this->emitUp("selected-$this->name", $model);
+        if (!$silent) {
+            $this->emitUp("selected-$this->name", $model);
+
+            // Prevent the component from resetting all the properties if array is empty
+            if (!empty($this->resets)) {
+                $this->reset($this->resets);
+            }
+        }
     }
 
     /**
