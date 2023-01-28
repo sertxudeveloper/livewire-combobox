@@ -3,10 +3,7 @@
 
 # Add combobox to your Livewire forms
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/sertxudeveloper/livewire-combobox.svg)](https://packagist.org/packages/sertxudeveloper/livewire-combobox)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/sertxudeveloper/livewire-combobox/run-tests?label=tests)](https://github.com/sertxudeveloper/livewire-combobox/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![Codecov Test coverage](https://img.shields.io/codecov/c/github/sertxudeveloper/livewire-combobox)](https://app.codecov.io/gh/sertxudeveloper/livewire-combobox)
-[![Total Downloads](https://img.shields.io/packagist/dt/sertxudeveloper/livewire-combobox.svg)](https://packagist.org/packages/sertxudeveloper/livewire-combobox)
+![](https://img.shields.io/github/v/release/sertxudeveloper/livewire-combobox) ![](https://github.com/sertxudeveloper/livewire-combobox/actions/workflows/run-tests.yml/badge.svg) ![](https://img.shields.io/github/license/sertxudeveloper/livewire-combobox) ![](https://img.shields.io/librariesio/github/sertxudeveloper/livewire-combobox) ![](https://img.shields.io/github/repo-size/sertxudeveloper/livewire-combobox) ![](https://img.shields.io/packagist/dt/sertxudeveloper/livewire-combobox) ![](https://img.shields.io/github/issues/sertxudeveloper/livewire-combobox) ![](https://img.shields.io/packagist/php-v/sertxudeveloper/livewire-combobox)
 
 Do you have a large dataset, and you need to be able to display it in a dropdown?
 
