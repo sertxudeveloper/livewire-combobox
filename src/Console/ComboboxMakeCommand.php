@@ -7,8 +7,8 @@ use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use InvalidArgumentException;
 use Symfony\Component\Console\Input\InputOption;
 
-class ComboboxMakeCommand extends GeneratorCommand {
-
+class ComboboxMakeCommand extends GeneratorCommand
+{
     /**
      * The console command name.
      *
@@ -33,8 +33,8 @@ class ComboboxMakeCommand extends GeneratorCommand {
     /**
      * Build the class with the given name.
      *
-     * @param string $name
-     * @return string
+     * @param  string  $name
+     *
      * @throws FileNotFoundException
      */
     protected function buildClass($name): string {
@@ -48,17 +48,14 @@ class ComboboxMakeCommand extends GeneratorCommand {
     /**
      * Get the default namespace for the class.
      *
-     * @param string $rootNamespace
-     * @return string
+     * @param  string  $rootNamespace
      */
     protected function getDefaultNamespace($rootNamespace): string {
-        return $rootNamespace . '\Http\Livewire';
+        return $rootNamespace.'\Http\Livewire';
     }
 
     /**
      * Get the console command options.
-     *
-     * @return array
      */
     protected function getOptions(): array {
         return [
@@ -68,18 +65,14 @@ class ComboboxMakeCommand extends GeneratorCommand {
 
     /**
      * Get the stub file for the generator.
-     *
-     * @return string
      */
     protected function getStub(): string {
-        return __DIR__ . '/stubs/combobox.stub';
+        return __DIR__.'/stubs/combobox.stub';
     }
 
     /**
      * Get the fully-qualified model class name.
      *
-     * @param string $model
-     * @return string
      *
      * @throws InvalidArgumentException
      */
@@ -93,10 +86,6 @@ class ComboboxMakeCommand extends GeneratorCommand {
 
     /**
      * Replace the model for the given stub.
-     *
-     * @param string $stub
-     * @param string $model
-     * @return string
      */
     protected function replaceModel(string $stub, string $model): string {
         $modelClass = $this->parseModel($model);

@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
 use SertxuDeveloper\LivewireCombobox\Tests\Models\User;
 
-class UserFactory extends Factory {
-
+class UserFactory extends Factory
+{
     /**
      * The name of the factory's corresponding model.
      *

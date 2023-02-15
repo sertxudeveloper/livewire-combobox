@@ -7,12 +7,10 @@ use SertxuDeveloper\LivewireCombobox\Tests\Components\BasicCombobox;
 use SertxuDeveloper\LivewireCombobox\Tests\Database\Seeders\UserSeeder;
 use SertxuDeveloper\LivewireCombobox\Tests\Models\User;
 
-class BasicComboboxTest extends TestCase {
-
+class BasicComboboxTest extends TestCase
+{
     /**
      * Check if the component is rendered correctly.
-     *
-     * @return void
      */
     public function test_the_component_can_render(): void {
         $this->seed(UserSeeder::class);
@@ -33,8 +31,6 @@ class BasicComboboxTest extends TestCase {
 
     /**
      * Check if the component is rendered the available options correctly.
-     *
-     * @return void
      */
     public function test_the_component_can_render_available_results(): void {
         $this->seed(UserSeeder::class);
@@ -59,8 +55,6 @@ class BasicComboboxTest extends TestCase {
 
     /**
      * Check if the component can select automatically the only option.
-     *
-     * @return void
      */
     public function test_the_component_can_select_automatically_the_only_option(): void {
         $this->seed(UserSeeder::class);
@@ -85,8 +79,6 @@ class BasicComboboxTest extends TestCase {
 
     /**
      * Check an option can be selected.
-     *
-     * @return void
      */
     public function test_an_option_can_be_selected(): void {
         $this->seed(UserSeeder::class);
@@ -114,8 +106,6 @@ class BasicComboboxTest extends TestCase {
 
     /**
      * Check the selected option is cleared when the search has changed.
-     *
-     * @return void
      */
     public function test_the_selected_option_is_cleared_when_the_search_has_changed(): void {
         $this->seed(UserSeeder::class);
@@ -155,8 +145,6 @@ class BasicComboboxTest extends TestCase {
 
     /**
      * Check the selected option is cleared when the search has been cleared.
-     *
-     * @return void
      */
     public function test_the_selected_option_is_cleared_when_the_search_has_been_cleared(): void {
         $this->seed(UserSeeder::class);

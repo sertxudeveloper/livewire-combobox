@@ -5,12 +5,10 @@ namespace SertxuDeveloper\LivewireCombobox\Tests\Console;
 use InvalidArgumentException;
 use SertxuDeveloper\LivewireCombobox\Tests\TestCase;
 
-class ComboboxMakeCommandTest extends TestCase {
-
+class ComboboxMakeCommandTest extends TestCase
+{
     /**
      * Check if the command can be executed.
-     *
-     * @return void
      */
     public function test_command_can_be_executed(): void {
         $this->artisan('combobox:make', [
@@ -23,8 +21,6 @@ class ComboboxMakeCommandTest extends TestCase {
 
     /**
      * Check if the command can be executed with the --model option.
-     *
-     * @return void
      */
     public function test_command_can_be_executed_with_model_option(): void {
         $this->artisan('combobox:make', [
@@ -38,8 +34,6 @@ class ComboboxMakeCommandTest extends TestCase {
 
     /**
      * Check if the command generates the correct file.
-     *
-     * @return void
      */
     public function test_command_generates_correct_file(): void {
         $this->artisan('combobox:make', [
@@ -57,8 +51,6 @@ class ComboboxMakeCommandTest extends TestCase {
 
     /**
      * Check if the command cannot be executed with an invalid name.
-     *
-     * @return void
      */
     public function test_command_cannot_be_executed_with_invalid_model(): void {
         $this->expectException(InvalidArgumentException::class);
