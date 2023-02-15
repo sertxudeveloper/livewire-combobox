@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
 use SertxuDeveloper\LivewireCombobox\Tests\Models\User;
 
-class UserFactory extends Factory {
-
+class UserFactory extends Factory
+{
     /**
      * The name of the factory's corresponding model.
      *
@@ -21,7 +21,8 @@ class UserFactory extends Factory {
      *
      * @return array<string, mixed>
      */
-    public function definition(): array {
+    public function definition(): array
+    {
         return [
             'name' => $this->faker->name,
             'email' => $this->faker->unique()->safeEmail,

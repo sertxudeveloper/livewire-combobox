@@ -7,8 +7,8 @@ use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use InvalidArgumentException;
 use Symfony\Component\Console\Input\InputOption;
 
-class ComboboxMakeCommand extends GeneratorCommand {
-
+class ComboboxMakeCommand extends GeneratorCommand
+{
     /**
      * The console command name.
      *
@@ -33,11 +33,12 @@ class ComboboxMakeCommand extends GeneratorCommand {
     /**
      * Build the class with the given name.
      *
-     * @param string $name
-     * @return string
+     * @param  string  $name
+     *
      * @throws FileNotFoundException
      */
-    protected function buildClass($name): string {
+    protected function buildClass($name): string
+    {
         $stub = parent::buildClass($name);
 
         $model = $this->option('model');
@@ -48,19 +49,18 @@ class ComboboxMakeCommand extends GeneratorCommand {
     /**
      * Get the default namespace for the class.
      *
-     * @param string $rootNamespace
-     * @return string
+     * @param  string  $rootNamespace
      */
-    protected function getDefaultNamespace($rootNamespace): string {
-        return $rootNamespace . '\Http\Livewire';
+    protected function getDefaultNamespace($rootNamespace): string
+    {
+        return $rootNamespace.'\Http\Livewire';
     }
 
     /**
      * Get the console command options.
-     *
-     * @return array
      */
-    protected function getOptions(): array {
+    protected function getOptions(): array
+    {
         return [
             ['model', 'm', InputOption::VALUE_REQUIRED, 'Specify the model to use.'],
         ];
@@ -68,22 +68,20 @@ class ComboboxMakeCommand extends GeneratorCommand {
 
     /**
      * Get the stub file for the generator.
-     *
-     * @return string
      */
-    protected function getStub(): string {
-        return __DIR__ . '/stubs/combobox.stub';
+    protected function getStub(): string
+    {
+        return __DIR__.'/stubs/combobox.stub';
     }
 
     /**
      * Get the fully-qualified model class name.
      *
-     * @param string $model
-     * @return string
      *
      * @throws InvalidArgumentException
      */
-    protected function parseModel(string $model): string {
+    protected function parseModel(string $model): string
+    {
         if (preg_match('([^A-Za-z\d_/\\\\])', $model)) {
             throw new InvalidArgumentException('Model name contains invalid characters.');
         }
@@ -93,12 +91,9 @@ class ComboboxMakeCommand extends GeneratorCommand {
 
     /**
      * Replace the model for the given stub.
-     *
-     * @param string $stub
-     * @param string $model
-     * @return string
      */
-    protected function replaceModel(string $stub, string $model): string {
+    protected function replaceModel(string $stub, string $model): string
+    {
         $modelClass = $this->parseModel($model);
 
         $replace = [

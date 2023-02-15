@@ -7,27 +7,26 @@ use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 use SertxuDeveloper\LivewireCombobox\ComboboxServiceProvider;
 
-class TestCase extends Orchestra {
-
+class TestCase extends Orchestra
+{
     /**
      * Define database migrations.
-     *
-     * @return void
      */
-    protected function defineDatabaseMigrations(): void {
+    protected function defineDatabaseMigrations(): void
+    {
         $this->loadLaravelMigrations();
-        $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
     }
 
     /**
      * Get package providers.
      *
-     * @param Application $app
-     *
+     * @param  Application  $app
      * @return array<int, class-string>
      */
-    protected function getPackageProviders($app): array {
+    protected function getPackageProviders($app): array
+    {
         return [
             LivewireServiceProvider::class,
             ComboboxServiceProvider::class,

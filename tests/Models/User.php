@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use SertxuDeveloper\LivewireCombobox\Tests\Database\Factories\UserFactory;
 
-class User extends Authenticatable {
-
+class User extends Authenticatable
+{
     use HasFactory;
 
     /**
@@ -29,10 +29,9 @@ class User extends Authenticatable {
 
     /**
      * Create a new factory instance for the model.
-     *
-     * @return Factory
      */
-    protected static function newFactory(): Factory {
+    protected static function newFactory(): Factory
+    {
         return new UserFactory();
     }
 }
