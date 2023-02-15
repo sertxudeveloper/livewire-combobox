@@ -81,14 +81,13 @@ abstract class Combobox extends Component
     /**
      * Mount the component.
      */
-    public function mount(): void
-    {
-        if (! $this->label) {
+    public function mount(): void {
+        if (!$this->label) {
             $this->label = Str::headline($this->name);
         }
 
-        if ($this->init && ! $this->selected && ! $this->search && $this->keepSelection) {
-            if (! $this->init instanceof $this->model) {
+        if ($this->init && !$this->selected && !$this->search && $this->keepSelection) {
+            if (!$this->init instanceof $this->model) {
                 return;
             }
             $this->selectModel($this->init, true);
@@ -98,8 +97,7 @@ abstract class Combobox extends Component
     /**
      * Render the component.
      */
-    public function render(): View
-    {
+    public function render(): View {
         return view('livewire-combobox::livewire.combobox', [
             'collection' => $this->getCollection(),
         ]);
@@ -108,8 +106,7 @@ abstract class Combobox extends Component
     /**
      * Select the given model.
      */
-    public function select(mixed $id, bool $silent = false): void
-    {
+    public function select(mixed $id, bool $silent = false): void {
         $model = $this->model::query()->find($id, $this->columns);
         if ($model) {
             $this->selectModel($model, $silent);
@@ -119,13 +116,12 @@ abstract class Combobox extends Component
     /**
      * Get the collection of results.
      */
-    protected function getCollection(): ?Collection
-    {
+    protected function getCollection(): ?Collection {
         if ($this->selected && $this->selected->{$this->labelColumn} !== $this->search) {
             $this->clearSelection();
         }
 
-        if (! $this->search) {
+        if (!$this->search) {
             return null;
         }
 
@@ -142,8 +138,7 @@ abstract class Combobox extends Component
     /**
      * Query the model for the search results.
      */
-    protected function queryModel(): Collection
-    {
+    protected function queryModel(): Collection {
         $query = $this->model::query();
 
         /** Apply filter to query */
@@ -164,18 +159,17 @@ abstract class Combobox extends Component
     /**
      * Set as selected the provided model and emit the selected event.
      */
-    protected function selectModel(mixed $model, bool $silent = false): void
-    {
+    protected function selectModel(mixed $model, bool $silent = false): void {
         if ($this->keepSelection) {
             $this->selected = $model;
             $this->search = $model->{$this->labelColumn};
         }
 
-        if (! $silent) {
+        if (!$silent) {
             $this->emitUp("selected-$this->name", $model);
 
             // Prevent the component from resetting all the properties if array is empty
-            if (! empty($this->resets)) {
+            if (!empty($this->resets)) {
                 $this->reset($this->resets);
             }
         }
@@ -184,8 +178,7 @@ abstract class Combobox extends Component
     /**
      * Clear the current selection.
      */
-    protected function clearSelection(): void
-    {
+    protected function clearSelection(): void {
         $this->selected = null;
 
         $this->emitUp("cleared-$this->name");

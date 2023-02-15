@@ -37,8 +37,7 @@ class ComboboxMakeCommand extends GeneratorCommand
      *
      * @throws FileNotFoundException
      */
-    protected function buildClass($name): string
-    {
+    protected function buildClass($name): string {
         $stub = parent::buildClass($name);
 
         $model = $this->option('model');
@@ -51,16 +50,14 @@ class ComboboxMakeCommand extends GeneratorCommand
      *
      * @param  string  $rootNamespace
      */
-    protected function getDefaultNamespace($rootNamespace): string
-    {
+    protected function getDefaultNamespace($rootNamespace): string {
         return $rootNamespace.'\Http\Livewire';
     }
 
     /**
      * Get the console command options.
      */
-    protected function getOptions(): array
-    {
+    protected function getOptions(): array {
         return [
             ['model', 'm', InputOption::VALUE_REQUIRED, 'Specify the model to use.'],
         ];
@@ -69,8 +66,7 @@ class ComboboxMakeCommand extends GeneratorCommand
     /**
      * Get the stub file for the generator.
      */
-    protected function getStub(): string
-    {
+    protected function getStub(): string {
         return __DIR__.'/stubs/combobox.stub';
     }
 
@@ -80,8 +76,7 @@ class ComboboxMakeCommand extends GeneratorCommand
      *
      * @throws InvalidArgumentException
      */
-    protected function parseModel(string $model): string
-    {
+    protected function parseModel(string $model): string {
         if (preg_match('([^A-Za-z\d_/\\\\])', $model)) {
             throw new InvalidArgumentException('Model name contains invalid characters.');
         }
@@ -92,8 +87,7 @@ class ComboboxMakeCommand extends GeneratorCommand
     /**
      * Replace the model for the given stub.
      */
-    protected function replaceModel(string $stub, string $model): string
-    {
+    protected function replaceModel(string $stub, string $model): string {
         $modelClass = $this->parseModel($model);
 
         $replace = [

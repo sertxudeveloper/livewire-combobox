@@ -10,8 +10,7 @@ class ComboboxMakeCommandTest extends TestCase
     /**
      * Check if the command can be executed.
      */
-    public function test_command_can_be_executed(): void
-    {
+    public function test_command_can_be_executed(): void {
         $this->artisan('combobox:make', [
             'name' => 'TestCombobox',
         ]);
@@ -23,8 +22,7 @@ class ComboboxMakeCommandTest extends TestCase
     /**
      * Check if the command can be executed with the --model option.
      */
-    public function test_command_can_be_executed_with_model_option(): void
-    {
+    public function test_command_can_be_executed_with_model_option(): void {
         $this->artisan('combobox:make', [
             'name' => 'TestModelCombobox',
             '--model' => 'User',
@@ -37,8 +35,7 @@ class ComboboxMakeCommandTest extends TestCase
     /**
      * Check if the command generates the correct file.
      */
-    public function test_command_generates_correct_file(): void
-    {
+    public function test_command_generates_correct_file(): void {
         $this->artisan('combobox:make', [
             'name' => 'TestModelCombobox',
             '--model' => 'User',
@@ -55,8 +52,7 @@ class ComboboxMakeCommandTest extends TestCase
     /**
      * Check if the command cannot be executed with an invalid name.
      */
-    public function test_command_cannot_be_executed_with_invalid_model(): void
-    {
+    public function test_command_cannot_be_executed_with_invalid_model(): void {
         $this->expectException(InvalidArgumentException::class);
 
         $this->artisan('combobox:make', [
