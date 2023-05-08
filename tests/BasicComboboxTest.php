@@ -197,8 +197,7 @@ class BasicComboboxTest extends TestCase
         $component->assertSee('Search users...');
     }
 
-    public function test_can_be_mounted_with_an_initial_model(): void
-    {
+    public function test_can_be_mounted_with_an_initial_model(): void {
         $this->seed(UserSeeder::class);
         $user = User::query()->where('email', 'user_b@example.com')->first();
 

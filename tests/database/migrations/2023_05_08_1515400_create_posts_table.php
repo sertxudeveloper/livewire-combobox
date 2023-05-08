@@ -7,11 +7,8 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up(): void
-    {
+    public function up(): void {
         Schema::create('posts', function (Blueprint $table): void {
             $table->id();
             $table->string('title');
@@ -22,11 +19,8 @@ return new class extends Migration {
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down(): void
-    {
+    public function down(): void {
         Schema::dropIfExists('posts');
     }
 };
