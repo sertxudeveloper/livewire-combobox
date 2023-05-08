@@ -181,7 +181,7 @@ abstract class Combobox extends Component
         if (!$silent) {
             $this->emitUp("selected-$this->name", $model);
 
-            // Prevent the component from resetting all the properties if array is empty
+            // Prevent the component from resetting all the properties
             if (!empty($this->resets)) {
                 $this->reset($this->resets);
             }
