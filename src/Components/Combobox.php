@@ -53,6 +53,11 @@ abstract class Combobox extends Component
     public array $searchColumns = ['name'];
 
     /**
+     * If the combobox should be able to create new models.
+     */
+    public bool $canCreate = false;
+
+    /**
      * The columns and the order that should be obtained.
      *
      * @var string[]
@@ -82,14 +87,13 @@ abstract class Combobox extends Component
      * Mount the component.
      */
     public function mount(): void {
-        if (!$this->label) {
-            $this->label = Str::headline($this->name);
-        }
+        $this->label ??= Str::headline($this->name);
 
         if ($this->init && !$this->selected && !$this->search && $this->keepSelection) {
             if (!$this->init instanceof $this->model) {
                 return;
             }
+
             $this->selectModel($this->init, true);
         }
     }
@@ -108,9 +112,18 @@ abstract class Combobox extends Component
      */
     public function select(mixed $id, bool $silent = false): void {
         $model = $this->model::query()->find($id, $this->columns);
+
         if ($model) {
             $this->selectModel($model, $silent);
         }
+    }
+
+    public function create(): void {
+        $model = $this->model::create([
+            $this->labelColumn => $this->search,
+        ]);
+
+        $this->selectModel(model: $model->fresh());
     }
 
     /**
