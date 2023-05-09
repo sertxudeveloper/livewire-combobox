@@ -114,6 +114,26 @@ These events will be fired up, so the parent component can react to the user int
 > **Note**<br>
 > The `selected` event contains the selected model as a parameter.
 
+## Adding filters
+
+You can filter the results by adding filters to the component.
+
+```php
+/**
+ * Apply filters to the query.
+ *
+ * @param Builder $query
+ * @return void
+ */
+protected function filter(Builder $query): void {
+    $query->where('email', 'like', "%@example.com");
+}
+```
+
+The `filter` method receives the query builder as a parameter, so you can add as many filters as you want.
+
+The filters will be applied to the query before fetching the results, so you can use them to limit the options given to the user. 
+
 ## Testing
 
 This package contains tests, you can run them using the following command:
