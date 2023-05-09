@@ -8,13 +8,12 @@
                @focus="open = true" @click="open = true" wire:model.debounce.800ms="search" wire:clear
                role="combobox" aria-controls="options" aria-expanded="false">
 
-        @if($collection && $collection->isNotEmpty())
-            <ul class="absolute z-21 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
-                x-show="open" x-cloak role="listbox">
-
+        <ul class="absolute z-21 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
+            x-show="open" x-cloak role="listbox">
+            @if($collection && $collection->isNotEmpty())
                 @foreach($collection as $item)
                     <li class="relative cursor-pointer select-none py-2 pl-3 pr-9 text-gray-900 hover:bg-blue-50"
-                        wire:click="select('{{ $item->getKey() }}')"
+                        wire:click="select('{{ $item->getKey() }}')" @click="open = false"
                         role="option" tabindex="-1">
                         @if($selected && $selected->getKey() === $item->getKey())
                             <span class="block truncate font-medium">{{ $item->$labelColumn }}</span>
@@ -28,8 +27,15 @@
                         @endif
                     </li>
                 @endforeach
+            @endif
 
-            </ul>
-        @endif
+            @if($canCreate && $search)
+                <li class="relative cursor-pointer select-none py-2 pl-3 pr-9 text-gray-900 hover:bg-blue-50"
+                    wire:click="create" @click="open = false"
+                    role="option" tabindex="-1">
+                    <span class="block truncate">Create <b>{{ $search }}</b></span>
+                </li>
+            @endif
+        </ul>
     </div>
 </div>
