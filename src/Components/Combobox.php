@@ -11,15 +11,19 @@ use Livewire\Component;
 
 abstract class Combobox extends Component
 {
-    /** @var class-string<Model> */
+    /** @var class-string<Model> The model to be used. */
     public string $model;
 
+    /** The selected model. */
     public ?Model $selected = null;
 
+    /** The name of the combobox. */
     public string $name = 'combobox';
 
+    /** The label of the combobox. */
     public string $label = 'Combobox';
 
+    /** The placeholder of the combobox. */
     public string $placeholder = 'Select an option';
 
     /** The search query */
@@ -28,60 +32,31 @@ abstract class Combobox extends Component
     /** If set to false, will not keep the selection, useful if you want to make a list. */
     public bool $keepSelection = true;
 
-    /**
-     * The initial selection of the combobox.
-     */
+    /** The initial selection of the combobox. */
     public ?Model $init = null;
 
-    /**
-     * The columns that should be obtained.
-     *
-     * @var string[]
-     */
+    /** The columns that should be obtained. */
     public array $columns = ['*'];
 
-    /**
-     * The column to be shown as the label.
-     */
+    /** The column to be shown as the label. */
     public string $labelColumn = 'name';
 
-    /**
-     * The columns that should be searched on.
-     *
-     * @var string[]
-     */
+    /** The columns that should be searched on.*/
     public array $searchColumns = ['name'];
 
-    /**
-     * If the combobox should be able to create new models.
-     */
+    /** If the combobox should be able to create new models. */
     public bool $canCreate = false;
 
-    /**
-     * The columns and the order that should be obtained.
-     *
-     * @var string[]
-     */
+    /** The columns and the order that should be obtained. */
     public array $sortColumns = [
         'id' => 'asc',
     ];
 
-    /**
-     * The quantity of results to be shown.
-     */
+    /** The quantity of results to be shown. */
     public int $limit = 10;
 
-    /**
-     * If the result has only one result, it will be automatically selected.
-     */
+    /** If the result has only one result, it will be automatically selected. */
     public bool $selectOnlyResult = true;
-
-    /**
-     * The properties that should be reset once a selection is made.
-     */
-    protected array $resets = [
-        //
-    ];
 
     /**
      * Mount the component.
@@ -111,13 +86,14 @@ abstract class Combobox extends Component
      * Select the given model.
      */
     public function select(mixed $id, bool $silent = false): void {
-        $model = $this->model::query()->find($id, $this->columns);
-
-        if ($model) {
+        if ($model = $this->model::query()->find($id, $this->columns)) {
             $this->selectModel($model, $silent);
         }
     }
 
+    /**
+     * Create a brand-new model with the given label.
+     */
     public function create(): void {
         $model = $this->model::create([
             $this->labelColumn => $this->search,
@@ -176,15 +152,12 @@ abstract class Combobox extends Component
         if ($this->keepSelection) {
             $this->selected = $model;
             $this->search = $model->{$this->labelColumn};
+        } else {
+            $this->reset(['selected', 'search']);
         }
 
         if (!$silent) {
             $this->emitUp("selected-$this->name", $model);
-
-            // Prevent the component from resetting all the properties
-            if (!empty($this->resets)) {
-                $this->reset($this->resets);
-            }
         }
     }
 
