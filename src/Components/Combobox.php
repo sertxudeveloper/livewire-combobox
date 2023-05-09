@@ -137,6 +137,11 @@ abstract class Combobox extends Component
             }
         });
 
+        /** Apply custom filters to query */
+        if (method_exists($this, 'filter')) {
+            $this->filter($query);
+        }
+
         /** Apply order to query */
         foreach ($this->sortColumns as $column => $direction) {
             $query->orderBy($column, $direction);
