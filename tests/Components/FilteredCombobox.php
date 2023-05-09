@@ -17,11 +17,8 @@ class FilteredCombobox extends Combobox
 
     /**
      * Apply filters to the query.
-     *
-     * @param Builder $query
-     * @return void
      */
     protected function filter(Builder $query): void {
-        $query->where('email', 'like', "%@example.com");
+        $query->where('email', 'like', '%@example.com');
     }
 }

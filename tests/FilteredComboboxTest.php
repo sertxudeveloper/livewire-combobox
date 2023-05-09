@@ -3,10 +3,7 @@
 namespace SertxuDeveloper\LivewireCombobox\Tests;
 
 use Livewire\Livewire;
-use SertxuDeveloper\LivewireCombobox\Tests\Components\BasicCombobox;
 use SertxuDeveloper\LivewireCombobox\Tests\Components\FilteredCombobox;
-use SertxuDeveloper\LivewireCombobox\Tests\Database\Seeders\UserSeeder;
-use SertxuDeveloper\LivewireCombobox\Tests\Models\Post;
 use SertxuDeveloper\LivewireCombobox\Tests\Models\User;
 
 class FilteredComboboxTest extends TestCase
