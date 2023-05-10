@@ -5,7 +5,7 @@
 
     <div class="relative mt-1">
         <input type="search" class="form-input" name="{{ $name }}" id="{{ $name }}" placeholder="{{ $placeholder }}"
-               @focus="open = true" @click="open = true" @focusout="open = false"
+               @focus="open = true" @click="open = true" @focusout.debounce.500ms="open = false"
                wire:model.debounce.800ms="search" wire:clear
                role="combobox" aria-controls="options" aria-expanded="false" autocomplete="off">
 
