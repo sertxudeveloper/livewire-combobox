@@ -77,7 +77,7 @@ abstract class Combobox extends Component
      * Render the component.
      */
     public function render(): View {
-        return view('livewire-combobox::livewire.combobox', [
+        return view('livewire-combobox::combobox', [
             'collection' => $this->getCollection(),
         ]);
     }
