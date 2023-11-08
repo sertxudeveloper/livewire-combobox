@@ -24,12 +24,12 @@ class DontKeepSelectionComboboxTest extends TestCase
             ->assertSee('User B')
             ->assertSee('User C')
             ->assertDontSee('Other')
-            ->assertNotEmitted('selected-users')
-            ->assertNotEmitted('cleared-users');
+            ->assertNotDispatched('selected-users')
+            ->assertNotDispatched('cleared-users');
 
         $component->call('select', 1)
-            ->assertEmittedUp('selected-users')
-            ->assertNotEmitted('cleared-users')
+            ->assertDispatched('selected-users')
+            ->assertNotDispatched('cleared-users')
             ->assertSet('selected', null);
     }
 }

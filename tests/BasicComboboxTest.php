@@ -26,8 +26,8 @@ class BasicComboboxTest extends TestCase
         $component->assertSee('Users');
         $component->assertSee('Select a user');
 
-        $component->assertNotEmitted('selected-users');
-        $component->assertNotEmitted('cleared-users');
+        $component->assertNotDispatched('selected-users');
+        $component->assertNotDispatched('cleared-users');
     }
 
     /**
@@ -50,8 +50,8 @@ class BasicComboboxTest extends TestCase
         $component->assertSee('User C');
         $component->assertDontSee('Other');
 
-        $component->assertNotEmitted('selected-users');
-        $component->assertNotEmitted('cleared-users');
+        $component->assertNotDispatched('selected-users');
+        $component->assertNotDispatched('cleared-users');
     }
 
     /**
@@ -74,8 +74,8 @@ class BasicComboboxTest extends TestCase
         $component->assertDontSee('User C');
         $component->assertSee('Other');
 
-        $component->assertEmittedUp('selected-users');
-        $component->assertNotEmitted('cleared-users');
+        $component->assertDispatched('selected-users');
+        $component->assertNotDispatched('cleared-users');
     }
 
     /**
@@ -101,8 +101,8 @@ class BasicComboboxTest extends TestCase
         $component->assertDontSee('User C');
         $component->assertDontSee('Other');
 
-        $component->assertEmittedUp('selected-users');
-        $component->assertNotEmitted('cleared-users');
+        $component->assertDispatched('selected-users');
+        $component->assertNotDispatched('cleared-users');
     }
 
     /**
@@ -127,8 +127,8 @@ class BasicComboboxTest extends TestCase
         $component->assertDontSee('User C');
         $component->assertDontSee('Other');
 
-        $component->assertEmittedUp('selected-users');
-        $component->assertNotEmitted('cleared-users');
+        $component->assertDispatched('selected-users');
+        $component->assertNotDispatched('cleared-users');
 
         $component = $component->set('search', 'User');
 
@@ -140,8 +140,8 @@ class BasicComboboxTest extends TestCase
         $component->assertSee('User C');
         $component->assertDontSee('Other');
 
-        $component->assertNotEmitted('selected-users');
-        $component->assertEmittedUp('cleared-users');
+        $component->assertNotDispatched('selected-users');
+        $component->assertDispatched('cleared-users');
     }
 
     /**
@@ -166,8 +166,8 @@ class BasicComboboxTest extends TestCase
         $component->assertDontSee('User C');
         $component->assertDontSee('Other');
 
-        $component->assertEmittedUp('selected-users');
-        $component->assertNotEmitted('cleared-users');
+        $component->assertDispatched('selected-users');
+        $component->assertNotDispatched('cleared-users');
 
         $component = $component->set('search', '');
 
@@ -179,8 +179,8 @@ class BasicComboboxTest extends TestCase
         $component->assertDontSee('User C');
         $component->assertDontSee('Other');
 
-        $component->assertNotEmitted('selected-users');
-        $component->assertEmittedUp('cleared-users');
+        $component->assertNotDispatched('selected-users');
+        $component->assertDispatched('cleared-users');
     }
 
     public function test_can_render_with_a_custom_search_placeholder(): void {
@@ -214,8 +214,8 @@ class BasicComboboxTest extends TestCase
         $component->assertDontSee('User C');
         $component->assertDontSee('Other');
 
-        $component->assertEmittedUp('selected-users');
-        $component->assertNotEmitted('cleared-users');
+        $component->assertDispatched('selected-users');
+        $component->assertNotDispatched('cleared-users');
 
         $component = $component->set('search', 'User');
 
@@ -226,8 +226,8 @@ class BasicComboboxTest extends TestCase
         $component->assertSee('User C');
         $component->assertDontSee('Other');
 
-        $component->assertNotEmitted('selected-users');
-        $component->assertEmittedUp('cleared-users');
+        $component->assertNotDispatched('selected-users');
+        $component->assertDispatched('cleared-users');
     }
 
     public function test_initial_value_ignored_if_not_an_instance_of_search_model(): void {
@@ -244,7 +244,7 @@ class BasicComboboxTest extends TestCase
         $component->assertSee('Users');
         $component->assertSee('Select an option');
 
-        $component->assertNotEmitted('selected-users');
-        $component->assertNotEmitted('cleared-users');
+        $component->assertNotDispatched('selected-users');
+        $component->assertNotDispatched('cleared-users');
     }
 }

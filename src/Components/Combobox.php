@@ -162,7 +162,7 @@ abstract class Combobox extends Component
         }
 
         if (!$silent) {
-            $this->emitUp("selected-$this->name", $model);
+            $this->dispatch("selected-$this->name", $model);
         }
     }
 
@@ -172,6 +172,6 @@ abstract class Combobox extends Component
     protected function clearSelection(): void {
         $this->selected = null;
 
-        $this->emitUp("cleared-$this->name");
+        $this->dispatch("cleared-$this->name");
     }
 }

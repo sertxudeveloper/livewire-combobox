@@ -19,8 +19,8 @@ class AllowCreationComboboxTest extends TestCase
         $component->assertSuccessful()
             ->assertSee('Posts')
             ->assertSee('Create <b>Another Post</b>', false)
-            ->assertNotEmitted('selected-posts')
-            ->assertNotEmitted('cleared-posts');
+            ->assertNotDispatched('selected-posts')
+            ->assertNotDispatched('cleared-posts');
 
         $this->assertDatabaseCount('posts', 3);
 
@@ -28,8 +28,8 @@ class AllowCreationComboboxTest extends TestCase
 
         $post = Post::query()->where('title', 'Another Post')->first();
 
-        $component->assertEmitted('selected-posts')
-            ->assertNotEmitted('cleared-posts')
+        $component->assertDispatched('selected-posts')
+            ->assertNotDispatched('cleared-posts')
             ->assertSet('selected', $post);
 
         $this->assertDatabaseCount('posts', 4);
