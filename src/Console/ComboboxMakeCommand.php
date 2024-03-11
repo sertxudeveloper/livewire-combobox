@@ -51,7 +51,7 @@ class ComboboxMakeCommand extends GeneratorCommand
      * @param  string  $rootNamespace
      */
     protected function getDefaultNamespace($rootNamespace): string {
-        return $rootNamespace.'\Http\Livewire';
+        return $rootNamespace.'\Livewire';
     }
 
     /**
