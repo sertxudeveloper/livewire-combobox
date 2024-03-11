@@ -15,8 +15,8 @@ class ComboboxMakeCommandTest extends TestCase
             'name' => 'TestCombobox',
         ]);
 
-        $this->assertFileExists(app_path('Http/Livewire/TestCombobox.php'));
-        unlink(app_path('Http/Livewire/TestCombobox.php'));
+        $this->assertFileExists(app_path('Livewire/TestCombobox.php'));
+        unlink(app_path('Livewire/TestCombobox.php'));
     }
 
     /**
@@ -28,8 +28,8 @@ class ComboboxMakeCommandTest extends TestCase
             '--model' => 'User',
         ]);
 
-        $this->assertFileExists(app_path('Http/Livewire/TestModelCombobox.php'));
-        unlink(app_path('Http/Livewire/TestModelCombobox.php'));
+        $this->assertFileExists(app_path('Livewire/TestModelCombobox.php'));
+        unlink(app_path('Livewire/TestModelCombobox.php'));
     }
 
     /**
@@ -41,12 +41,12 @@ class ComboboxMakeCommandTest extends TestCase
             '--model' => 'User',
         ]);
 
-        $contents = file_get_contents(app_path('Http/Livewire/TestModelCombobox.php'));
+        $contents = file_get_contents(app_path('Livewire/TestModelCombobox.php'));
 
         $this->assertStringContainsString('class TestModelCombobox extends Combobox', $contents);
         $this->assertStringContainsString('use App\Models\User;', $contents);
 
-        unlink(app_path('Http/Livewire/TestModelCombobox.php'));
+        unlink(app_path('Livewire/TestModelCombobox.php'));
     }
 
     /**
@@ -60,6 +60,6 @@ class ComboboxMakeCommandTest extends TestCase
             '--model' => 'User-*Invalid\\Model',
         ]);
 
-        $this->assertFileDoesNotExist(app_path('Http/Livewire/TestModelCombobox.php'));
+        $this->assertFileDoesNotExist(app_path('Livewire/TestModelCombobox.php'));
     }
 }
