@@ -60,6 +60,9 @@ jobs:
         laravel: [10, '11']
         coverage-driver: [pcov]
         stability: [prefer-lowest, prefer-stable]
+        exclude:
+          - laravel: '11'
+            php: 8.1
 
     name: Windows - P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }}
 
